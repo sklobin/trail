@@ -1,1 +1,241 @@
-404 not found. please contact developer 
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Update Prank</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="loader-container">
+        <div class="windows-logo">
+            <div class="win-pane"></div>
+            <div class="win-pane"></div>
+            <div class="win-pane"></div>
+            <div class="win-pane"></div>
+        </div>
+
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="text">Working on updates 100%<br>Don't turn off your computer</div>
+    </div>
+
+    <button id="fs-btn" onclick="toggleFullScreen()">Go Full Screen</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html><style>body,
+html {
+    height: 100%;
+    margin: 0;
+    background-color: #0078D7;
+    /* Official Modern Windows Blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    cursor: wait;
+    /* Shows the loading spinner cursor */
+    user-select: none;
+    /* Prevents highlighting text */
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+/* --- LOGO STYLING --- */
+.windows-logo {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    transform: perspective(100px) rotateY(-20deg);
+}
+
+.win-pane {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- LOADER STYLING --- */
+.loader {
+    bottom: -20px;
+    margin-top: 180px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.dot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: rotate(225deg);
+    animation: orbit 5.5s infinite;
+}
+
+.dot::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    /* box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); */
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(225deg);
+        opacity: 1;
+        animation-timing-function: cubic-bezier(0.1, 0.0, 0.2, 1);
+    }
+
+    7% {
+        transform: rotate(345deg);
+        animation-timing-function: linear;
+    }
+
+    30% {
+        transform: rotate(455deg);
+        animation-timing-function: cubic-bezier(0.35, 0.0, 0.25, 1);
+    }
+
+    39% {
+        transform: rotate(690deg);
+        animation-timing-function: linear;
+    }
+
+    70% {
+        transform: rotate(815deg);
+        opacity: 1;
+        animation-timing-function: cubic-bezier(0.1, 0.0, 0.2, 1);
+    }
+
+    75% {
+        transform: rotate(945deg);
+        animation-timing-function: linear;
+    }
+
+    76% {
+        transform: rotate(945deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(945deg);
+        opacity: 0;
+    }
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 100ms;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 200ms;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 300ms;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 400ms;
+}
+
+/* --- TEXT STYLING --- */
+.text {
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- BUTTON STYLING --- */
+#fs-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+#fs-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}</style><script>function toggleFullScreen() {
+    var elem = document.documentElement;
+    var btn = document.getElementById("fs-btn");
+
+    if (!document.fullscreenElement) {
+        // Enter Full Screen
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+
+        // Hide the button and cursor for realism
+        btn.style.display = 'none';
+        document.body.style.cursor = 'none';
+    } else {
+        // Exit Full Screen (Optional, handled by ESC key usually)
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+// Listen for fullscreen change to show button again if user presses ESC
+document.addEventListener('fullscreenchange', (event) => {
+    if (!document.fullscreenElement) {
+        var btn = document.getElementById("fs-btn");
+        btn.style.display = 'block';
+        document.body.style.cursor = 'wait';
+    }
+});</script>
